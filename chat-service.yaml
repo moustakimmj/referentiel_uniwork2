@@ -21,5 +21,4 @@ logging:
       springframework:
         cloud: 
           config: DEBUG
-
-      logging.level.org.springframework.cloud.config=DEBUG
+#test:
