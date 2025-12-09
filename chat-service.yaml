@@ -6,7 +6,6 @@ spring:
     name: chat-service
   config:
     import: optional:configserver:http://localhost:8888
-
 eureka:
   client:
     service-url:
@@ -15,12 +14,6 @@ eureka:
     fetch-registry: true
   instance:
     prefer-ip-address: true
-
-logging:
-  level:
-    org:
-      springframework:
-        cloud: DEBUG
 feign:
   client:
     config:
@@ -28,3 +21,33 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,circuitbreakers,retries,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Configuration Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      userServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  retry:
+    instances:
+      userServiceRetry:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions:
+          - java.io.IOException
+          - java.net.ConnectException

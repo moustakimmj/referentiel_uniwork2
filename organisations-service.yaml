@@ -3,18 +3,24 @@ server:
 spring:
   application :
     name : organisations-service
+  server:
+  port : 8085
+spring:
+  application :
+    name : organisations-service
   datasource:
     url: jdbc:postgresql://localhost:5432/Uniworkorganisations
     username: postgres
-    password: 123
-    driver-class-name: org.postgresql.Driver
-
-    jpa:
-      hibernate:
-        ddl-auto: update
+    password:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
       show-sql: true
+
   config:
     import: optional:configserver:http://localhost:8888
+
 eureka:
   client:
     service-url:
@@ -23,6 +29,7 @@ eureka:
     fetch-registry: true
   instance:
     prefer-ip-address: true
+
 feign:
   client:
     config:
@@ -30,3 +37,33 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,circuitbreakers,retries,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Configuration Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      userServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  retry:
+    instances:
+      userServiceRetry:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions:
+          - java.io.IOException
+          - java.net.ConnectException
