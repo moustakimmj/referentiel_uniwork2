@@ -1,10 +1,6 @@
 server:
   port : 8085
-spring:
-  application :
-    name : organisations-service
-  server:
-  port : 8085
+  
 spring:
   application :
     name : organisations-service
