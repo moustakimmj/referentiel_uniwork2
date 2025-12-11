@@ -4,6 +4,9 @@ server:
 spring:
   application :
     name : organisations-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
   datasource:
     url: jdbc:postgresql://localhost:5432/Uniworkorganisations2
     username: postgres
@@ -13,9 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
       show-sql: true
-
-  config:
-    import: optional:configserver:http://localhost:8888
 
 eureka:
   client:
