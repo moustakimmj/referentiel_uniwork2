@@ -13,11 +13,7 @@ spring: # Clé unique
   main:
     allow-bean-definition-overriding: true
 
-  cloud: # La partie cloud est déplacée ici
-    config:
-      server:
-        git:
-          refreshRate: 0
+
 
 server:
   error:
