@@ -1,7 +1,4 @@
-spring: # Clé unique
-  datasource:
-    driver-class-name: org.postgresql.Driver
-
+spring:
   jpa:
     show-sql: true
     hibernate:
@@ -9,15 +6,6 @@ spring: # Clé unique
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-  main:
-    allow-bean-definition-overriding: true
-
-
-
-server:
-  error:
-    include-message: always
 
 management:
   endpoints:
