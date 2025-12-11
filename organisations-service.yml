@@ -10,7 +10,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/Uniworkorganisations2
     username: postgres
-    password:
+    password: 123
   jpa:
     open-in-view: true
     hibernate:
