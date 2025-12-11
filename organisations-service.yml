@@ -5,7 +5,7 @@ spring:
   application :
     name : organisations-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/Uniworkorganisations
+    url: jdbc:postgresql://localhost:5432/Uniworkorganisations2
     username: postgres
     password:
   jpa:
