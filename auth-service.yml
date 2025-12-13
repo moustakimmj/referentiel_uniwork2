@@ -4,8 +4,7 @@ spring:
   application :
     name : auth-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/Uniworkauthentification
-    username: postgres
+    url: jdbc:postgresql://localhost:5432/unis
     password: 123
     jpa:
       open-in-view: true
