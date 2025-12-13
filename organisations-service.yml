@@ -1,11 +1,15 @@
 server:
-  port : 8085
-  
+  port: 8085
+
 spring:
-  application :
-    name : organisations-service
-  config:
-    import: optional:configserver:http://localhost:8888
+  # L'application name peut être dans application.yml ou bootstrap.yml.
+  # Le maintenir ici est acceptable, mais la bonne pratique pour l'utilisation du Config Server est de le mettre dans bootstrap.yml également.
+  application:
+    name: organisations-service
+
+  # --- SECTION SUPPRIMÉE/CORRIGÉE ---
+  # La section 'cloud: config: import:' doit être supprimée de application.yml.
+  # Elle doit être déplacée dans 'bootstrap.yml'.
 
   datasource:
     url: jdbc:postgresql://localhost:5432/Uniworkorganisations2
@@ -32,7 +36,6 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-        loggerLevel: full
 
 management:
   endpoints:
