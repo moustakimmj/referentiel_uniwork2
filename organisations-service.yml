@@ -36,7 +36,11 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-
+logging:
+  level:
+    com.moustakim.organisationsservice.feign: DEBUG
+    feign: DEBUG
+    
 management:
   endpoints:
     web:
