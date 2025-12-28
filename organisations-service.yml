@@ -55,9 +55,7 @@ resilience4j:
         waitDurationInOpenState: 5s
         permittedNumberOfCallsInHalfOpenState: 3
         automaticTransitionFromOpenToHalfOpenEnabled: true
-  fallback:
-    rxjava3:
-      enabled: false
+  
   retry:
     instances:
       authServiceRetry:
