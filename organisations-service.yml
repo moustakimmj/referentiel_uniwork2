@@ -54,7 +54,7 @@ management:
 resilience4j:
   circuitbreaker:
     instances:
-      userServiceCB:
+      authServiceCB:
         registerHealthIndicator: true
         slidingWindowSize: 10
         failureRateThreshold: 50
@@ -64,7 +64,7 @@ resilience4j:
 
   retry:
     instances:
-      userServiceRetry:
+      authServiceRetry:
         maxAttempts: 3
         waitDuration: 1000
         retryExceptions:
