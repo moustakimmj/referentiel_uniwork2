@@ -4,7 +4,11 @@ server:
 spring:
   application:
     name: chat-service
-
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chat_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
   config:
     import: optional:configserver:http://localhost:8888
 
