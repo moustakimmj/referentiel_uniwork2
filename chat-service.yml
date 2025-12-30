@@ -9,8 +9,7 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-  config:
-    import: optional:configserver:http://localhost:8888
+  
 
 eureka:
   client:
