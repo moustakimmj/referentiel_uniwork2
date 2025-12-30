@@ -4,12 +4,22 @@ server:
 spring:
   application:
     name: chat-service
-  datasource:
+    datasource:
     url: jdbc:postgresql://localhost:5432/chat_db
     username: postgres
     password: 123
     driver-class-name: org.postgresql.Driver
-  
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-interval: 2000
+        max-attempts: 6
+        multiplier: 1.1
 
 eureka:
   client:
@@ -58,3 +68,8 @@ resilience4j:
         retryExceptions:
           - java.io.IOException
           - java.net.ConnectException
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: chat-service-group
+      auto-offset-reset: earliest
